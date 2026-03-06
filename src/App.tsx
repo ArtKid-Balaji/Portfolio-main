@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -32,22 +33,24 @@ function App() {
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      {/* Header */}
-      <Header />
+    <Router basename={import.meta.env.BASE_URL}>
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+        {/* Header */}
+        <Header />
 
-      {/* Dark Mode Floating Toggle Button */}
-      <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        {/* Dark Mode Floating Toggle Button */}
+        <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      {/* Page Sections */}
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Certificates />
-      <ArtGallery />
-      <Contact />
-    </div>
+        {/* Page Sections */}
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Certificates />
+        <ArtGallery />
+        <Contact />
+      </div>
+    </Router>
   );
 }
 
