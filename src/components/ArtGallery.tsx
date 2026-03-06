@@ -57,24 +57,18 @@ const ArtGallery = () => {
     }
   };
   // 🔑 Keyboard navigation effect
-  useEffect(() => {
+ useEffect(() => {
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (selectedImage !== null) {
-      if (e.key === "ArrowRight") {
-        goToNext();
-      } else if (e.key === "ArrowLeft") {
-        goToPrevious();
-      } else if (e.key === "Escape") {
-        closeLightbox();
-      }
-    }
+    if (selectedImage === null) return;
+
+    if (e.key === "ArrowRight") goToNext();
+    if (e.key === "ArrowLeft") goToPrevious();
+    if (e.key === "Escape") closeLightbox();
   };
 
   window.addEventListener("keydown", handleKeyDown);
   return () => window.removeEventListener("keydown", handleKeyDown);
-}, [selectedImage]);
-
-  
+}, [selectedImage, goToNext, goToPrevious]);
 
   const getMediumColor = (medium: string) => {
     const colors = {
