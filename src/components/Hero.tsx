@@ -1,13 +1,8 @@
-import React from 'react';
 import { ChevronDown } from 'lucide-react';
+import useScrollToSection from '../hooks/useScrollToSection';
 
 const Hero = () => {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const scrollToSection = useScrollToSection();
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">

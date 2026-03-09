@@ -11,44 +11,49 @@ import Contact from "./components/Contact";
 import DarkModeToggle from "./components/DarkModeToggle";
 
 function App() {
-  // Initialize dark mode based on localStorage or system preference
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
     if (saved !== null) return saved === "true";
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
-  // Update <html> class and save setting whenever darkMode changes
   useEffect(() => {
     const root = document.documentElement;
-    if (darkMode) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+    if (darkMode) root.classList.add("dark");
+    else root.classList.remove("dark");
+
     localStorage.setItem("darkMode", darkMode.toString());
   }, [darkMode]);
 
-  // Toggle dark mode
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
+
+  // ✅ You MUST return JSX
   return (
     <Router basename={import.meta.env.BASE_URL}>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-        {/* Header */}
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
+        {/* Header with scroll function */}
         <Header />
 
-        {/* Dark Mode Floating Toggle Button */}
+        {/* Dark Mode Toggle */}
         <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-        {/* Page Sections */}
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Certificates />
-        <ArtGallery />
-        <Contact />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <section id="hero"><Hero /></section>
+                <section id="about"><About /></section>
+                <section id="skills"><Skills /></section>
+                <section id="projects"><Projects /></section>
+                <section id="certificates"><Certificates /></section>
+                <section id="artgallery"><ArtGallery /></section>
+                <section id="contact"><Contact /></section>
+              </>
+            }
+          />
+        </Routes>
       </div>
     </Router>
   );
