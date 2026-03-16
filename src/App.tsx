@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -30,32 +30,30 @@ function App() {
 
   // ✅ You MUST return JSX
   return (
-    <Router basename={import.meta.env.BASE_URL}>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
-        {/* Header with scroll function */}
-        <Header />
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 text-gray-900 dark:text-gray-100">
+      {/* Header with scroll function */}
+      <Header />
 
-        {/* Dark Mode Toggle */}
-        <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      {/* Dark Mode Toggle */}
+      <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <section id="hero"><Hero /></section>
-                <section id="about"><About /></section>
-                <section id="skills"><Skills /></section>
-                <section id="projects"><Projects /></section>
-                <section id="certificates"><Certificates /></section>
-                <section id="artgallery"><ArtGallery /></section>
-                <section id="contact"><Contact /></section>
-              </>
-            }
-          />
-        </Routes>
-      </div>
-    </Router>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <section id="hero"><Hero /></section>
+              <section id="about"><About /></section>
+              <section id="skills"><Skills /></section>
+              <section id="projects"><Projects /></section>
+              <section id="certificates"><Certificates /></section>
+              <section id="artgallery"><ArtGallery /></section>
+              <section id="contact"><Contact /></section>
+            </>
+          }
+        />
+      </Routes>
+    </div>
   );
 }
 

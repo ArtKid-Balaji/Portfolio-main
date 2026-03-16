@@ -17,12 +17,12 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '#hero' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Certificates', href: '#certificates' },
-    { name: 'Art Gallery', href: '#gallery' },
+    { name: 'Art Gallery', href: '#artgallery' },
     { name: 'Contact', href: '#contact' },
   ];
 
